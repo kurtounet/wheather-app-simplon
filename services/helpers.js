@@ -26,16 +26,16 @@ export const getAMPM = (unitSystem, currentTime, timezone) =>
     : "";
 
 export const getWeekDay = (weatherData) => {
+  
   const weekday = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-  ];
-  // supprimer le timezone
+    "Dimanche",
+    "Lundi",
+    "Mardi",
+    "Mercredi",
+    "Jeudi",
+    "Vendredi",
+    "Samedi",
+  ];   
   return weekday[new Date(weatherData.current.time * 1000).getUTCDay()];
 };
 export const getIcon = (wmoCode) => {
