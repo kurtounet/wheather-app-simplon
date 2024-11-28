@@ -35,7 +35,47 @@ export const getWeekDay = (weatherData) => {
     "Friday",
     "Saturday",
   ];
-  return weekday[
-    new Date((weatherData.dt + weatherData.timezone) * 1000).getUTCDay()
-  ];
+  // supprimer le timezone
+  return weekday[new Date(weatherData.current.time * 1000).getUTCDay()];
+};
+export const getIcon = (wmoCode) => {
+  if (wmoCode === 0) {
+    return "01d";
+  }
+  if (wmoCode === 1) {
+    return "01n";
+  }
+  if (wmoCode === 2) {
+    return "02d";
+  }
+  if (wmoCode === 3) {
+    return "02n";
+  }
+  if (wmoCode >= 1 && wmoCode <= 4) {
+    return "03d";
+  }
+  if (wmoCode === 45 || wmoCode === 48) {
+    return "50d";
+  }
+  if (wmoCode >= 51 && wmoCode <= 57) {
+    return "50d";
+  }
+  if (wmoCode >= 61 && wmoCode <= 67) {
+    return "10d";
+  }
+  if (wmoCode >= 71 && wmoCode <= 77) {
+    return "13d";
+  }
+  if (wmoCode === 80 || wmoCode === 81 || wmoCode === 82) {
+    return "10d";
+  }
+
+  if (wmoCode >= 85 && wmoCode <= 86) {
+    return "13d";
+  }
+
+  if (wmoCode >= 95 && wmoCode <= 99) {
+    return "11d";
+  }
+  return "unknown";
 };
