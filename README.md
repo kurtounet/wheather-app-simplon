@@ -1,8 +1,8 @@
 # Weather App
 
 Check the current weather on any city on the planet. Switch between metric and imperial units.
- 
-![Alt img](public\screen.png)
+
+![Aperçu](public\screen.png)
 
 ## Features
 
