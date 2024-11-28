@@ -2,7 +2,7 @@
 
 Check the current weather on any city on the planet. Switch between metric and imperial units.
 
-![Aperçu](public\screen.png)
+<a href="https://ibb.co/CHj1QTy"><img src="https://i.ibb.co/jrC6D1Y/screen.png" alt="screen" border="0"></a>
 
 ## Features
 
