@@ -21,8 +21,7 @@ export const App = () => {
     const getData = async () => {
       try {
         const res = await fetch("api/data");
-        const data = await res.json();
-        console.log(data);
+        const data = await res.json();        
         setWeatherData({ ...data });
       } catch (error) {
         console.error("Erreur lors de la récupération des données :", error);
