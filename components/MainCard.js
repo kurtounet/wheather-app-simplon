@@ -1,5 +1,6 @@
 import Image from "next/image";
-import { ctoF } from "../services/converters";
+import { ctoF, wmoCodeToDescription } from "../services/converters";
+import { getIcon } from "../services/helpers";
 import styles from "./MainCard.module.css";
 
 export const MainCard = ({
@@ -15,24 +16,27 @@ export const MainCard = ({
       <h1 className={styles.location}>
         {city}, {country}
       </h1>
-      <p className={styles.description}>{description}</p>
+      <p className={styles.description}>
+        {wmoCodeToDescription(weatherData.current.weather_code)}
+      </p>
+
       <Image
-        width="300px"
-        height="300px"
-        src={`/icons/${iconName}.svg`}
+        width={300}
+        height={300}
+        src={`/icons/${getIcon(weatherData.current.weather_code)}.svg`}
         alt="weatherIcon"
       />
       <h1 className={styles.temperature}>
         {unitSystem == "metric"
-          ? Math.round(weatherData.main.temp)
-          : Math.round(ctoF(weatherData.main.temp))}
+          ? Math.round(weatherData.current.temperature_2m)
+          : Math.round(ctoF(weatherData.current.temperature_2m))}
         °{unitSystem == "metric" ? "C" : "F"}
       </h1>
       <p>
-        Feels like{" "}
+        ressentit{" "}
         {unitSystem == "metric"
-          ? Math.round(weatherData.main.feels_like)
-          : Math.round(ctoF(weatherData.main.feels_like))}
+          ? Math.round(weatherData.current.apparent_temperature)
+          : Math.round(ctoF(weatherData.apparent_temperature))}
         °{unitSystem == "metric" ? "C" : "F"}
       </p>
     </div>
