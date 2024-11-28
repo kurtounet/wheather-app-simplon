@@ -32,10 +32,54 @@ export const degToCompass = (num) => {
   return arr[val % 16];
 };
 
-export const unixToLocalTime = (unixSeconds, timezone) => {
-  let time = new Date((unixSeconds + timezone) * 1000)
-    .toISOString()
-    .match(/(\d{2}:\d{2})/)[0];
+export const unixToLocalTime = (unixtime) => {
+  const time = new Date(unixtime * 1000).toLocaleTimeString("fr-FR", {
+    hour: "numeric",
+    minute: "numeric",
+  });
+  return time;
+};
 
-  return time.startsWith("0") ? time.substring(1) : time;
+export const wmoCodeToDescription = (wmoCode) => {
+  const wmoCodes = {
+    0: "Ciel clair",
+    1: "Principalement clair",
+    2: "Partiellement nuageux",
+    3: "Nuages fragmentés",
+    4: "Couvert",
+
+    45: "Brouillard",
+    48: "Brouillard givrant",
+
+    51: "Brune légère",
+    53: "Brune modérée",
+    55: "Brune dense",
+    56: "Brune givrée légère",
+    57: "Brune givrée dense",
+
+    61: "Pluie légère",
+    63: "Pluie modérée",
+    65: "Pluie forte",
+    66: "Pluie givrée légère",
+    67: "Pluie givrée forte",
+
+    71: "Neige légère",
+    73: "Neige modérée",
+    75: "Neige forte",
+    77: "Grains de neige",
+
+    68: "Pluie/neige givrée légère",
+    69: "Pluie/neige givrée forte",
+
+    80: "Averses de pluie légères",
+    81: "Averses de pluie modérées ou fortes",
+    82: "Averses de pluie violentes",
+    85: "Averses de neige légères",
+    86: "Averses de neige fortes",
+
+    95: "Orage léger ou modéré",
+    96: "Orage avec grêle légère",
+    99: "Orage avec grêle forte",
+  };
+  return wmoCodes[wmoCode] || "Description not available";
 };
